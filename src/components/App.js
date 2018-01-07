@@ -49,10 +49,11 @@ export class App extends Component {
 							 	)}/> :
 			 (this.props.location.pathname === "/add-day") ?
 			 	<AddDayForm /> :
-			 	<GymDayList days={this.state.allGymDays}/>				 
-			}
-					
-			</div>
-		)
-	}
+			 	<GymDayList days={this.state.allGymDays}
+                 filter={this.props.params.filter}/>				 
+}
+        
+</div>
+)
+}
 }

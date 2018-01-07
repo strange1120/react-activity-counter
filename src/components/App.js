@@ -1,6 +1,8 @@
 import { Component } from 'react'
 import { GymDayList } from './GymDayList'
 import { GymDayCount } from './GymDayCount'
+import { AddDayForm } from './AddDayForm'
+import { Menu } from './Menu'
 
 export class App extends Component {
 	constructor(props) {
@@ -36,14 +38,20 @@ export class App extends Component {
 	render() {
 		return (
 			<div className="app">
-				<GymDayList days={this.state.allGymDays}/>
-				<GymDayCount total={this.countDays()}
+            <Menu />
+			{(this.props.location.pathname === "/") ?
+			  <GymDayCount total={this.countDays()}
 							 circuit={this.countDays(
 							 		"circuit"
 							 	)}
 							 lifting={this.countDays(
 							 		"lifting"
-							 	)}/>
+							 	)}/> :
+			 (this.props.location.pathname === "/add-day") ?
+			 	<AddDayForm /> :
+			 	<GymDayList days={this.state.allGymDays}/>				 
+			}
+					
 			</div>
 		)
 	}

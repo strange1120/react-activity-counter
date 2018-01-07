@@ -1,11 +1,13 @@
 import React from 'react'
 import { render } from 'react-dom'
+import './stylesheets/ui.scss'
 import { GymDayList } from './components/GymDayList'
 
 window.React = React
 
+
 render(
-<GymDayList days={
+	<GymDayList days={
 		[
 			{
 				gym: "Equinox",

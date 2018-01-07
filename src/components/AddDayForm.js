@@ -1,44 +1,65 @@
-import { PropTypes, Component } from 'react'
+import { PropTypes } from 'react'
 
-export class AddDayForm extends Component {
-	render() {
+export const AddDayForm = ({ gym, 
+	date, 
+	circuit, 
+	lifting,
+	onNewDay }) => {
 
-		const { gym, date, circuit, lifting } = this.props 
+let _gym, _date, _circuit, _lifting
+
+const submit = (e) => {
+	e.preventDefault()
+	onNewDay({
+		gym: _gym.value,
+		date: _date.value,
+		circuit: _circuit.checked,
+		lifting: _lifting.checked
+	})
+	_gym.value = ''
+	_date.value = ''
+	_circuit.checked = false
+	_lifting.checked = false
+
+}
 
 		return (
-			<form className="add-day-form">
-
+			<form onSubmit={submit} className="add-day-form">
 				<label htmlFor="gym">Gym Name</label>
 				<input id="gym" 
 					   type="text" 
 					   required 
-					   defaultValue={gym}/>
+					   defaultValue={gym}
+					   ref={input => _gym= input}/>
 
 				<label htmlFor="date">Date</label>
 				<input id="date" 
 					   type="date" 
 					   required 
-					   defaultValue={date}/>
+					   defaultValue={date}
+					   ref={input => _date = input}/>
 
 				<div>
 					<input id="circuit" 
 						   type="checkbox" 
-						   defaultChecked={circuit}	/>
+						   defaultChecked={circuit}	
+						   ref={input => _circuit = input}/>
 					<label htmlFor="circuit">Circuit Day</label>
 				</div>
 
 				<div>	
 					<input id="lifting" 
 						   type="checkbox"
-						   defaultChecked={lifting} />
+						   defaultChecked={lifting}
+						   ref={input => _lifting = input}/>
 					<label htmlFor="lifting">
 						Lifting Day
 					</label>
 				</div>
+				<button>Add Day</button>
 			</form>
 		)
 	}
-}
 
 AddDayForm.defaultProps = {
 	gym: "Crunch",

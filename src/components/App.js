@@ -11,7 +11,7 @@ export class App extends Component {
 			allGymDays: [
 			{
                 gym: "Equinox",
-				date: "1/2/2018",
+				date: "2018-01-06",
 				circuit: true,
 				lifting: false
 			}

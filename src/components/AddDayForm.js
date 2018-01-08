@@ -1,4 +1,39 @@
-import { PropTypes } from 'react'
+import { PropTypes, Component } from 'react'
+
+const commercialGyms = [
+	"Eqinox",
+	"Crunch",
+	"Planet Fitness",
+	"Southern Fitness",
+	"Anytime Fitness",
+	"Blink Fitness"
+]
+
+class Autocomplete extends Component {
+	
+	get value() {
+		return this.refs.inputGym.value
+	}
+
+	set value(inputValue) {
+		this.refs.inputGym.value = inputValue
+	}
+
+	render() {
+		return (
+			<div>
+				<input ref="inputGym"
+					   type="text" 
+					   list="commercial-gyms" />
+				<datalist id="commercial-gyms">
+					{this.props.options.map(
+						(opt, i) => 
+						<option key={i}>{opt}</option>)}
+				</datalist>
+			</div>
+		)
+	}
+}
 
 export const AddDayForm = ({ gym, 
 	date, 
@@ -26,11 +61,8 @@ const submit = (e) => {
 		return (
 			<form onSubmit={submit} className="add-day-form">
 				<label htmlFor="gym">Gym Name</label>
-				<input id="gym" 
-					   type="text" 
-					   required 
-					   defaultValue={gym}
-					   ref={input => _gym= input}/>
+				<Autocomplete options={commercialGyms}
+				   		  ref={input => _gym = input}/>
 
 				<label htmlFor="date">Date</label>
 				<input id="date" 

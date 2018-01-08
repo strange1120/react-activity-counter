@@ -1,3 +1,3 @@
 This is a web app activity tracker. It tracks which gym you went to, on what day, and what type of exercise you did. It tracks the exercises on the homepage and displays percentage to meeting goal.
 
-Clone from github. Make sure Node is installed on your computer. Type 'npm install' on the the project folder on the command line. Once all dependencies are installed, type 'npm start' on the command line. Navigate to localhost:3000 on a broswer. 
+Clone from github. Make sure Node is installed on your computer. Type 'npm install' on the the project folder on the command line. Once all dependencies are installed, type 'npm start' on the command line. Navigate to localhost:3000 on a browser. 
